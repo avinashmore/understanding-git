@@ -1,0 +1,64 @@
+Once you have Git installed and configured, the next step is to initialize Git in a project, essentially to tell Git to start tracking things in this Git project.
+
+command: git init 
+So we are going to tell Git to initialize the project to get everything ready to start doing its tracking
+
+to see what has happened after initializing git
+command: ls -la
+
+it will show all the hidden files and directories too
+here .git is a hidden directory. Git stores all of it's tracking information inside this folder.  You can think of it as Git's workspace where Git does everything that it's going to do, and if we wanted to remove Git and remove version control from our project, well, then it would just be a simple matter of removing this .git directory.
+
+Let's take a look at what's inside that directory, ls -la .git, and we can see a list of the files and folders that Git uses while it's doing its tracking. Now again this is Git's workspace, you don't want to come in here and start messing around and changing things, leave it alone, let Git manage these files and let it put things where they need to be. The only exception to that would be the config file, that's the only thing that you would really ever come in here and either take a look at or even possibly edit.
+
+This is for our project level configuration. Now we have an interface through Git that we saw in the Configuration chapter where we don't have to come in here and edit it directly, you can just use git commands to set the different values that you need. But if you did ever need to, that's where this file is located. Everything else, you want to leave alone. Now again, I want to just emphasize the point that everything that Git does is going to be stored in this single top-level directory, that's very different from svn.
+
+First commit: 
+So this is the basic process that we are going to follow throughout working with Git. It's really quite simple, you just make your changes, then you add the changes, and then you commit the changes to the repository with a message, and that's it. That's really the basic cycle that we are going to be following, make changes, add the changes, commit the changes.
+
+Git commit messages: 
+There are also some other best practices that we should follow. 
+ 1.	Start with a short single-line summary, less than 50 characters. Optionally, we can follow that by a blank line and then a more complete description. 
+
+ 2. Keep those additional lines to less than 72 characters. 
+
+ 3. Write commit messages in the present tense, not in the past tense, you are labeling what this commit does, not what you--as the creator--were doing.
+
+ 4. Label what it does. This fixes a bug, not I fixed a bug. It's not about you, it's about what this commit is. 
+
+ 5. If you need to have bullet points that describe what happens you usually use asterisk or hyphens, and you can add ticket tracking numbers from bugs or support requests or develop a shorthand for your organization. So maybe you put, for example, in square brackets at the beginning of your message that you are messing with the CSS or the JavaScript or maybe you label all bug fixes with bugfix:, or put a tracking number in the front letting it know what sort of support request ticket it goes with.
+
+ Examples: 
+ 1. Bad: "Fix typo"
+    Good: "Add missing > in project section of HTML" 
+ 2.	Bad: "Update login code" that's pretty general, 
+ 	Good: "Change user authentication to use Blowfish"
+ 3. Bad:"Updates member report, we should discuss if this is right next week". 
+ 4. Good:  
+ 	"t23094 - Fixes bug in admin logout. 
+
+ 	When an admin logged out of the admin area, they could 
+ 	not log in to the members area because their 
+ 	session :user_id was still set to the admin ID.""
+
+Viewing the commit log: 
+commnad: git log
+
+Options with this command: 
+command: git log -n 2 
+This command limits the number of commits to be shown. 
+command: git log --since=2.weeks
+This command will show commits since last 2 weeks
+command: git log --until=today
+Show commits older than a specific date.
+
+command: git log --author="Avinash"
+Limit the commits output to ones with author/committer header lines
+that match the specified pattern (regular expression).
+
+command: git log --grep "com"
+git log --grep="com"
+Limit the commits output to ones with log message that matches the
+specified pattern (regular expression).
+
+
